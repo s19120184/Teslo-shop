@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/Footer";
 import SideBarMenu from "@/components/ui/sidebar/SideBarMenu";
 import TopMenu from "@/components/ui/top-menu/TopMenu";
 import type { Metadata } from "next";
@@ -14,7 +15,7 @@ export default function ShopLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <main className="bg-gray-100 min-h-screen">
+      <main className="bg-gray-100 h-screen">
           <TopMenu/>
 
           <SideBarMenu/>
@@ -23,6 +24,7 @@ export default function ShopLayout({
                 {children}
           </div>
          
+         <Footer/>
       </main>
   );
 }

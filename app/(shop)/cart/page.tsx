@@ -3,6 +3,7 @@ import Tittle from "@/components/ui/title/Tittle";
 import { initialData } from "@/seed/seed";
 import Image from "next/image";
 import Link from "next/link";
+// import { redirect } from "next/navigation";
 import React from "react";
 
 const productsInCart = [
@@ -15,12 +16,16 @@ const productsInCart = [
 ];
 
 export default function CartPage() {
+
+  
+  // redirect('/empty')
+  
   return (
     <div className="flex  justify-center items-center   px-10 sm:px-0">
       <div className="flex flex-col  w-[1000px] ">
         <Tittle title="Carrito" />
 
-        <div className="flex flex-col  sm:flex-row  justify-between items-center sm:items-start ">
+        <div className="flex flex-col  sm:flex-row  justify-center gap-5 items-center sm:items-start ">
           <div className="grid grid-cols-1 sm:grid-col-2 gap-10 ">
             {/*carrito */}
             <div className="flex flex-col mt-5">
