@@ -11,7 +11,7 @@ export default function TopMenu() {
    const openMenu= useUIStore( state => state.openSideMenu)
 
   return (
-    <nav className="flex px-5 py-4 justify-between items-center w-full">
+    <nav className="flex px-5 py-4 justify-between items-center w-full ">
       {/* logo */}
       <div>
         <Link href={"/"} >
@@ -25,7 +25,7 @@ export default function TopMenu() {
       <div className="hidden sm:block">
          <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 " href={'/category/men'}>Hombres</Link>
          <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 " href={'/category/women'}>Mujeres</Link>
-         <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 " href={'/category/kids'}>Niños</Link>
+         <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 " href={'/category/kid'}>Niños</Link>
       </div>
       {/* Search, cart, menu */}
       <div className="flex items-center">
