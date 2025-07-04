@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Descripcion
 
-## Getting Started
 
-First, run the development server:
+## Correr en dev
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clonar el repositorio
+2. Instalar depandendicias ```npm install```
+3. Levantar la base de datos ```docker comopse up -d```
+4. Correr las migraciones de prisma ```npx prisma migrate dev```
+5. Ejecutar el see ```npx prisma db seed```
+5. Correr el Proyecto ```npm run dev``` 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+PS D:\cursos\Nextjs\TesloShop\teslo-shop> npx prisma init --db                            
+This will create a project for you on console.prisma.io and requires you to be authenticated.
+✔ Would you like to authenticate? Yes
+✔ Select an authentication method Google
+Authenticating to Prisma Platform via browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Visit the following URL in your browser to authenticate:
+https://console.prisma.io/auth/cli?state=eyJjbGllbnQiOiJwcmlzbWEtY2xpLWluaXQvMC40LjAgKFNpZ25hdHVyZTogOTE1MTJhNDctMDViMi00OTQ2LWI2ZWEtMmE5NDhjOTNiMzhhKSIsImNvbm5lY3Rpb24iOiJnb29nbGUiLCJyZWRpcmVjdFRvIjoiaHR0cDovLzEyNy4wLjAuMTo1NzAyMS8ifQ%3D%3D
+Successfully authenticated as luisslaycore@gmail.com.
+Let's set up your Prisma Postgres database!
+✔ Select your region: us-east-1 - US East (N. Virginia)
+✔ Enter a project name: teslo-shop
+✔ Success! Your Prisma Postgres database is ready ✅
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+We created an initial schema.prisma file and a .env file with your DATABASE_URL environment variable already set.
+
+--- Next steps ---
+
+Go to https://pris.ly/ppg-init for detailed instructions.
+
+1. Define your database schema
+Open the schema.prisma file and define your first models. Check the docs if you need inspiration: https://pris.ly/ppg-init.
+
+2. Apply migrations
+Run the following command to create and apply a migration:
+npx prisma migrate dev --name init
+
+3. Manage your data
+View and edit your data locally by running this command:
+npx prisma studio
+
+...or online in Console:
+https://console.prisma.io/cmca48b9v00ig1n0wblcy8sdh/cmca48p6500ii1n0won4d27dv/cmca48p6500ij1n0whhwjhwzr/studio
+
+4. Send queries from your app
+To access your database from a JavaScript/TypeScript app, you need to use Prisma ORM. Go here for step-by-step instructions: https://pris.ly/ppg-init
