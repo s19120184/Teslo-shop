@@ -14,13 +14,13 @@ const productsInCart = [
 ];
 
 interface  Props {
-  params:{
+  params:Promise<{
     id:string
-  }
+  }>
 }
 
-export default function OrderPage({params}:Props) {
-  const {id} = params
+export default async function OrderPage({params}:Props) {
+  const {id} =await params
 
   //todo: verificar
 
