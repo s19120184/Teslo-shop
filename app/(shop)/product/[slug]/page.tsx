@@ -1,9 +1,15 @@
+export const revalidate = 604800; //cada 7 dias 60*60 *24 * 7
+
+
+import { getProductBySlug } from '@/actions/products/get-product-by-slug';
 import QuantitySelector from '@/components/product/quantitySelector/QuantitySelector';
 import SizeSelector from '@/components/product/sizeSelector/SizeSelector';
 import ProductMovileSlideshow from '@/components/product/slideshow/ProductMovileSlideshow';
 import ProductSlideshow from '@/components/product/slideshow/ProductSlideshow';
+import StockLabel from '@/components/product/stock-label/StockLabel';
 import { titleFont } from '@/config/fonts';
-import { initialData } from '@/seed/seed';
+import { Metadata } from 'next';
+
 import { notFound } from 'next/navigation';
 import React from 'react'
 
@@ -13,10 +19,30 @@ interface Props {
    }>
 }
 
+
+export async function generateMetadata(
+  { params}: Props,
+  //  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = (await params).slug
+ 
+  // fetch post information
+  const product = await getProductBySlug(slug)
+  return {
+    title: product?.title ?? 'No encotrado',
+    description: product?.description ?? '',
+    openGraph:{
+      title: product?.title ?? 'No encotrado',
+      description: product?.description ?? '',
+      images:[`/products/${product?.images[1]}`]
+    }
+  }
+}
+
 export default async function ProductPage({params}:Props) {
 
   const {slug} =await params
-  const product = initialData.products.find(product=> product.slug === slug)
+  const product =await getProductBySlug(slug)
 
   if(!product){
     notFound()
@@ -48,6 +74,9 @@ export default async function ProductPage({params}:Props) {
       {/* detalles */}
 
       <div className="col-span-1  px-5 ">
+        
+        <StockLabel slug={slug}/>
+
         <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>
             {product.title}
         </h1>

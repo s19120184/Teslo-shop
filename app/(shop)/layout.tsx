@@ -5,7 +5,10 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Teslo | shop",
+  title:{
+    template:'%s - Teslo | shop ',
+    default: 'Home - Teslo | shop'
+  } ,
   description: "Tienda virtual de productos",
 };
 
