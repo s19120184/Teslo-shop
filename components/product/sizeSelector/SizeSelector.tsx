@@ -3,10 +3,12 @@ import clsx from "clsx";
 
 
 interface Props {
-    selectedSize:Size;
+    selectedSize?:Size;
     availableSizes:Size[]
+
+    onSizeChange:(size:Size) => void//agregamos para detectar el cambio de talla
 }
-export default function SizeSelector({selectedSize, availableSizes}:Props) {
+export default function SizeSelector({selectedSize, availableSizes, onSizeChange}:Props) {
 
 
   return (
@@ -17,6 +19,7 @@ export default function SizeSelector({selectedSize, availableSizes}:Props) {
                 availableSizes.map(size =>(
                      <button 
                         key={size} 
+                        onClick={()=> onSizeChange(size)}//agregamos 
                         className={clsx("mx-2 hover:underline text-lg",{
                             'underline':size === selectedSize
                         })}>

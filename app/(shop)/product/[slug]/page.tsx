@@ -2,8 +2,7 @@ export const revalidate = 604800; //cada 7 dias 60*60 *24 * 7
 
 
 import { getProductBySlug } from '@/actions/products/get-product-by-slug';
-import QuantitySelector from '@/components/product/quantitySelector/QuantitySelector';
-import SizeSelector from '@/components/product/sizeSelector/SizeSelector';
+
 import ProductMovileSlideshow from '@/components/product/slideshow/ProductMovileSlideshow';
 import ProductSlideshow from '@/components/product/slideshow/ProductSlideshow';
 import StockLabel from '@/components/product/stock-label/StockLabel';
@@ -12,6 +11,7 @@ import { Metadata } from 'next';
 
 import { notFound } from 'next/navigation';
 import React from 'react'
+import AddToCart from './ui/AddToCart';
 
 interface Props {
    params:Promise<{
@@ -81,20 +81,10 @@ export default async function ProductPage({params}:Props) {
             {product.title}
         </h1>
         <p className="text-lg mb-5">${product.price}</p>
+
+        <AddToCart product={product}/>
          
-         {/* selector de tallas */}
-         <SizeSelector selectedSize={product.sizes[0]} availableSizes={product.sizes} />
-
-         {/* selector de cantidad */}
-         <QuantitySelector quantity={2}/>
-         
-         {/* button */}
-
-         <button className='btn-primary my-5'>
-            Agregar al carrito
-         </button>
-
-
+      
          {/* descripcion */}
           <h3 className="font-bold text-sm ">Descripción</h3>
           <p className="font-light">{product.description}</p>
