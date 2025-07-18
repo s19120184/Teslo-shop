@@ -17,6 +17,9 @@ export default function ShopLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+   
+
   return (
       <main className="bg-gray-100 h-screen">
           <TopMenu/>
