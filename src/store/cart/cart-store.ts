@@ -14,6 +14,7 @@ interface State {
   addProductToCart: (product: CartProduct) => void;
   uptdatedProductQuantity: (quantity: number, product: CartProduct) => void;
   removeProduct: (product: CartProduct) => void;
+  cleaarCart:()=>void
 }
 
 export const useCartStore = create<State>()(
@@ -108,8 +109,17 @@ export const useCartStore = create<State>()(
         set({
           cart: updatedCardt
         });
-      }
+      },
+
+      cleaarCart:()=>{
+          set({
+            cart:[]
+          })
+      },
+      
     }),
+
+    
 
     {
       //nombre para el local storage

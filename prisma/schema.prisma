@@ -59,6 +59,8 @@ model Product {
 
   ProductImage ProductImage[]
 
+  orderItem orderItem[]
+
   @@index([gender])
 }
 
@@ -81,6 +83,9 @@ model User {
 
   //realcion 1 a 1
   address UserAddress?
+
+  //realcion con las ordenes
+  Order Order[]
 }
 
 model country {
@@ -88,10 +93,13 @@ model country {
   name String @unique
 
   UserAddress UserAddress[]
+
+  //realcin con order address
+  OrderAddress OrderAddress[]
 }
 
 model UserAddress {
-  id         String @id @default(uuid())
+  id         String  @id @default(uuid())
   firstName  String
   lastName   String
   address    String
@@ -100,12 +108,66 @@ model UserAddress {
   phone      String
   city       String
 
+  //relaciones 
+  country   country @relation(fields: [countryId], references: [id])
+  countryId String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+}
+
+//order de compras
+model Order {
+  id           String    @id @default(uuid())
+  subTotal     Float
+  tax          Float
+  total        Float
+  itemsInOrder Float
+  isPaid       Boolean   @default(false)
+  paidAt       DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  //relaciones
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  orderItem orderItem[]
+
+  //reaalcion de uno
+  OrderAddress OrderAddress?
+}
+
+model orderItem {
+  id       String @id @default(uuid())
+  quantity Int
+  price    Float
+  size     Size
+
+  //relaciones
+  order   Order  @relation(fields: [orderId], references: [id])
+  orderId String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+}
+
+model OrderAddress {
+  id         String  @id @default(uuid())
+  firstName  String
+  lastName   String
+  address    String
+  address2   String?
+  postalCode String
+  city       String
+  
+  phone      String
 
   //relaciones 
   country country @relation(fields: [countryId], references: [id])
   countryId String
 
-  user User @relation(fields: [userId], references: [id])
-  userId String @unique
-
+  order Order @relation(fields: [orderId], references: [id])
+  orderId String @unique
 }

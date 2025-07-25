@@ -91,7 +91,8 @@ export default function SideBarMenu() {
             <MenuItemSideBar
               title="Ordenes"
               icon={<IoTicketOutline size={30} />}
-              href="/"
+              href="/orders"
+              close={closeMenu}
             />
 
             {/* <Logout title="Salir" icon={<IoLogOutOutline size={30} />} /> */}
