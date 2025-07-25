@@ -15,7 +15,7 @@ export default async function OrdersPage() {
     <>
       <Tittle title="Orders" />
 
-      <div className="mb-10">
+      <div className=" mb-10 ">
         <table className="min-w-full">
           <thead className="bg-gray-200 border-b border-gray-200 ">
             <tr>
@@ -47,8 +47,7 @@ export default async function OrdersPage() {
           </thead>
           <tbody>
             {orders?.map((order) => (
-              <>
-                <tr className="bg-white border-b border-gray-200 transition duration-300 ease-in-out hover:bg-gray-100">
+                <tr key={order.id} className="bg-white border-b border-gray-200 transition duration-300 ease-in-out hover:bg-gray-100">
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     {order.id.split("-").at(-1)}
                   </td>
@@ -75,7 +74,7 @@ export default async function OrdersPage() {
                     </Link>
                   </td>
                 </tr>
-              </>
+              
             ))}
           </tbody>
         </table>
