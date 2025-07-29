@@ -137,6 +137,11 @@ model Order {
 
   //reaalcion de uno
   OrderAddress OrderAddress?
+
+  //para uso de paypal es el id de tercero banco, paypal ,stripe
+  //relacion con nuestro tercero
+  transactionId String?
+
 }
 
 model orderItem {

@@ -6,12 +6,13 @@ import { useAddressStore } from "@/src/store/address/address-store";
 import { useCartStore } from "@/src/store/cart/cart-store";
 import { currencyFormat } from "@/src/utils/currencyFormat";
 import clsx from "clsx";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
+
 import React, { useEffect, useState } from "react";
 
 export default function PlaceOrder() {
 
-  const router = useRouter()
+ 
   const [loaded, setLoaded] = useState(false);
   const [errorAction, setErrorAction] = useState('')
 
@@ -22,7 +23,7 @@ export default function PlaceOrder() {
 
   //storage cart
   const cart = useCartStore((state) => state.cart);
-  const clearCart = useCartStore(state => state.cleaarCart)
+  const cleaarCart = useCartStore(state => state.cleaarCart)
 
   // const {itemsInCart, subsTotal,tax,total} = getSumaryInformation()
 
@@ -53,8 +54,6 @@ export default function PlaceOrder() {
         size:product.size
     }))
 
-
-
     //! server action
     const resp =await placeOrder(productsToOrder, address)
     if(!resp.ok){
@@ -65,10 +64,10 @@ export default function PlaceOrder() {
 
     //* todo salio bien
     //limpiar el carrito y redireccionar
-    clearCart()
+     cleaarCart()
     //redireccion junto con el id
-    router.replace('/orders/'+resp.order)
-
+    window.location.replace(`/orders/${resp.order?.id}`)
+    
   }
 
   if (!loaded) {

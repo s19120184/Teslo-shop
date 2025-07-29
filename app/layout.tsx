@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { inter } from "@/config/fonts";
-import Provider from "@/components/providers/Provider";
+import Providers from "@/components/providers/Providers";
 
 
 
@@ -21,9 +21,9 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased`}
       >
-        <Provider>
+        <Providers>
           {children}
-       </Provider>
+       </Providers>
       </body>
     </html>
   );

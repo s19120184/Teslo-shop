@@ -1,15 +1,18 @@
 
 import { getOrderById } from "@/actions/order/get-order-by-id";
+import PayPalButton from "@/components/paypal/PayPalButton";
 import ErrorInput from "@/components/ui/errors/ErrorInput";
+import IsPaid from "@/components/ui/orderPayPal/IsPaid";
 import Tittle from "@/components/ui/title/Tittle";
 
+
 import { currencyFormat } from "@/src/utils/currencyFormat";
-import clsx from "clsx";
+
 import Image from "next/image";
 
 
 import React from "react";
-import { IoCardOutline } from "react-icons/io5";
+
 
 
 interface  Props {
@@ -19,7 +22,7 @@ interface  Props {
 }
 
 export default async function OrderPage({params}:Props) {
-  const {id} =await params
+  const {id} = await params
 
  
   //todo: verificar
@@ -28,7 +31,6 @@ export default async function OrderPage({params}:Props) {
   
  const  {orderItem, orderAddress, message ,order ,  } =  data
 
-   
     
   //  if(message !== '' || message !== undefined){
   //     notFound()
@@ -45,24 +47,7 @@ export default async function OrderPage({params}:Props) {
         <div className="flex flex-col  sm:flex-row  justify-center gap-10 items-center sm:items-start ">
           <div className="grid grid-cols-1 sm:grid-col-2 gap-10 ">
             {/*carrito */}
-            <div className="flex flex-col mt-5">
-
-              <div className={
-                 clsx(
-                  "flex items-center rounded-lg py-2 px-3.5 text-xs font-bold text-white mb-5",
-                  {
-                     'bg-red-500' : !order.isPaid,
-                     'bg-green-700': order.isPaid
-                  }
-                 )
-              }>
-                 <IoCardOutline size={30} />
-                 {/* <span>Pendiente de pago</span> */}
-                 <span>{order.isPaid ? ('Orden Pagada') : ('Orden No paganda')}</span>
-
-              </div>
-                
-            </div>
+            <IsPaid isPaid={order.isPaid}/>
             {/* items */}
             {orderItem.map((order) => (
               <div className="flex mb-2" key={order.product?.product.slug + order.item.id}>
@@ -118,27 +103,18 @@ export default async function OrderPage({params}:Props) {
               <span className="text-right">{currencyFormat(order.tax)}</span>
 
               <span className="mt-5 text-2xl">Total:</span>
-              <span className="mt-5 text-2xl text-right">{order.total}</span>
+              <span className="mt-5 text-2xl text-right">{currencyFormat(order.total)}</span>
             </div>
 
             <div className="mt-5 mb-2 w-full">
-
-
-               <div className={
-                 clsx(
-                  "flex items-center rounded-lg py-2 px-3.5 text-xs font-bold text-white mb-5",
-                  {
-                     'bg-red-500' : !order.isPaid,
-                     'bg-green-700': order.isPaid
-                  }
-                 )
-              }>
-                 <IoCardOutline size={30} />
-                 {/* <span>Pendiente de pago</span> */}
-                 <span>{order.isPaid ? ('Orden Pagada') : ('Orden No paganda')}</span>
-
-              </div>
-               
+              
+              {order.isPaid ? (
+                  <IsPaid isPaid={order.isPaid}/>
+              )  : (
+                 <PayPalButton amount={order.total} orderId={order.id}/>
+              )}
+              
+       
             </div>
           </div>
           {/* resumen fin */}

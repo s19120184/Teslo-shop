@@ -179,7 +179,7 @@ export default function AddressForm({
         <input
           type="text"
           className="p-2 border rounded-md bg-gray-200 border-transparent"
-          {...register("phone", { pattern: /^\d{10}$/ })}
+          {...register("phone", { pattern: /^\d{10}$/  ,required:true})}
         />
         {errors.phone && (
           <ErrorInput message="El Telefono es obligatorio" style="ml-2 top-1" />
