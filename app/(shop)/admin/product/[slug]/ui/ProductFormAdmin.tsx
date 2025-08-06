@@ -4,7 +4,7 @@ import { createUpdateProduct } from "@/actions/products/createUpdateProduct";
 import { deleteProductImage } from "@/actions/products/delete-product-image";
 import ProductImage from "@/components/product-image/ProductImage";
 import { categories } from "@/src/interfaces/category.interface";
-import { Product } from "@/src/interfaces/product.interface";
+import { Product, Size } from "@/src/interfaces/product.interface";
 
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
@@ -39,7 +39,7 @@ export default function ProductFormAdmin({ product, categories }: Props) {
 
   watch("sizes");
 
-  const onSizeChange = (size: string) => {
+  const onSizeChange = (size: Size) => {
     const sizes = new Set(getValues("sizes"));
 
     if (sizes.has(size)) {
@@ -191,12 +191,12 @@ export default function ProductFormAdmin({ product, categories }: Props) {
             {sizes.map((size) => (
               // bg-blue-500 text-white <--- si está seleccionado
               <div
-                onClick={() => onSizeChange(size)}
+                onClick={() => onSizeChange(size as Size)}
                 key={size}
                 className={clsx(
                   "flex  items-center justify-center w-10 h-10 mr-2 border rounded-md cursor-pointer",
                   {
-                    "bg-blue-500 text-white": getValues("sizes").includes(size)
+                    "bg-blue-500 text-white": getValues("sizes").includes(size as Size)
                   }
                 )}
               >
