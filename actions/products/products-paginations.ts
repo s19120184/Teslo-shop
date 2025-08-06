@@ -40,7 +40,8 @@ export const getPaginatedProductsWithImages =async({page=1 , take=12 ,gender}:Pa
             ProductImage:{
                 take:2,
                 select:{
-                    url: true
+                    url: true,
+                    id:true,   
                 }
             }
             

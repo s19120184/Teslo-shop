@@ -16,12 +16,18 @@ import clsx from "clsx";
 
 import { useSession } from "next-auth/react";
 import { logout } from "@/actions/auth/logout";
+import { useCartStore } from "@/src/store/cart/cart-store";
+import { useAddressStore } from "@/src/store/address/address-store";
 // import Logout from "./Logout";
 
 
 export default function SideBarMenu() {
   const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen);
   const closeMenu = useUIStore((state) => state.closeSideMenu);
+
+  const cleanCart = useCartStore(state=> state.cleaarCart)
+  const cleanAddress= useAddressStore(state=> state.setCleanAddres)
+  
 
   //obtener la sesion del lado del cliente
   const { data: session } = useSession();
@@ -32,6 +38,9 @@ export default function SideBarMenu() {
     const  handleOnclick = async ()=>{
       
       await logout()
+      cleanCart()
+      cleanAddress()
+
       window.location.reload();
       closeMenu();
     }
@@ -128,17 +137,20 @@ export default function SideBarMenu() {
             <MenuItemSideBar
               title="Productos"
               icon={<IoShirtOutline size={30} />}
-              href="/"
+              href="/admin/products"
+              close={closeMenu}
             />
             <MenuItemSideBar
               title="Ordenes"
               icon={<IoTicketOutline size={30} />}
-              href="/"
+              href="/admin/orders"
+              close={closeMenu}
             />
             <MenuItemSideBar
               title="Usuarios"
               icon={<IoPeopleOutline size={30} />}
-              href="/"
+              href="/admin/users"
+              close={closeMenu}
             />
           </>
         )}

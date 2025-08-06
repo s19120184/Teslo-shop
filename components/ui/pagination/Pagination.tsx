@@ -2,6 +2,7 @@
 "use client"
 
 import { generatePaginationNumbers } from "@/src/utils/generatePaginationNumbers";
+
 import clsx from "clsx";
 import Link from "next/link";
 import { redirect, usePathname, useSearchParams } from "next/navigation";

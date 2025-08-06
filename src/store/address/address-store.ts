@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 interface State {
   address: Address;
   setAddress: (address: Address) => void;
+   setCleanAddres:()=>void
 }
 
 interface Address {
@@ -20,7 +21,7 @@ interface Address {
 
 export const useAddressStore = create<State>()(
   persist(
-    (set, ) => ({
+    (set) => ({
       address: {
         firstName: "",
         lastName: "",
@@ -32,9 +33,23 @@ export const useAddressStore = create<State>()(
         rememberAddress: false
       },
       setAddress: (address: Address) => {
-         set({
-            address: address
-         })
+        set({
+          address: address
+        });
+      },
+      setCleanAddres: () => {
+        set({
+          address: {
+            firstName: "",
+            lastName: "",
+            address: "",
+            postalCode: "",
+            city: "",
+            country: "",
+            phone: "",
+            rememberAddress: false
+          }
+        });
       }
     }),
     {

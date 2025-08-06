@@ -4,12 +4,18 @@ export interface Product {
     images: string[];
     inStock: number;
     price: number;
-    sizes: Size[];
+    sizes:string[]  ;
     slug: string;
-    tags: string[];
+    tags: string[] ;
     title: string;
     //todo:type: ValidTypes;
     gender: Category
+    categoryId?:string
+    ProductImage?: {
+        id: number;
+        url: string;
+    }[];
+    imagesUp?:FileList
 }
 
 

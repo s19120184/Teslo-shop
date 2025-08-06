@@ -23,6 +23,8 @@ export default async function Home({searchParams}:Props) {
   const pageN = page ? parseInt(page) : 1
 
   const { totalPages, products} = await getPaginatedProductsWithImages({page:pageN});
+  
+
 
   //redireccinar a la primera pagina en cuandno ya no hay productos
   if(products.length ===0 ) {
@@ -33,7 +35,7 @@ export default async function Home({searchParams}:Props) {
        <>
         <Tittle  title="Tienda" subtitle="Todos los productos" className="mb-2"/>
           <ProductGrid products={products}/>
-          <Pagination totalPage={totalPages} />
+          <Pagination totalPage={totalPages}  />
        </>
 
        

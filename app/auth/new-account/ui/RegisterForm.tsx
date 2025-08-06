@@ -34,7 +34,7 @@ export default function RegisterForm() {
     }
     const res =await login(email.toLowerCase(), password)
     if(res.ok){
-        window.location.replace('/')
+       window.location.replace('/')
     }
   };
 

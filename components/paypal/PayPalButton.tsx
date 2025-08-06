@@ -61,11 +61,16 @@ export default function PayPalButton({ orderId, amount }: Props) {
   const onApprove = async (data: OnApproveData, actions: OnApproveActions) => {
     const details = await actions.order?.capture();
     if (!details) return;
-
+    
     await paypalCheckPaymet(details.id!);
   };
 
-  return <PayPalButtons createOrder={createOrder} onApprove={onApprove} />;
+  return (
+       <div className="relative z-0">
+
+         <PayPalButtons createOrder={createOrder} onApprove={onApprove} />
+       </div>
+      );
 }
 
 //onApprove se dispara cunado el proceso se realizo correctamente

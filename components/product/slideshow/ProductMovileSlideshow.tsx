@@ -13,7 +13,8 @@ import 'swiper/css/pagination';
 import './slideshow.css'
 
 import { Autoplay, FreeMode, Pagination, Thumbs } from 'swiper/modules';
-import Image from 'next/image';
+
+import ProductImage from "@/components/product-image/ProductImage";
 
 
 interface Props {
@@ -42,10 +43,10 @@ export default function ProductMovileSlideshow({ images, title, className }: Pro
             {
                 images.map(image=>(
                   <SwiperSlide key={image}>
-                      <Image
+                      <ProductImage
                         width={600}
                         height={500} 
-                        src={`/products/${image}`}
+                        src={image}
                         alt={title}
                         className='object-fill'
                         />

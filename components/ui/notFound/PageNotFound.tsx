@@ -1,3 +1,4 @@
+
 import { titleFont } from '@/config/fonts'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -19,7 +20,7 @@ export default function PageNotFound() {
        </div>
 
        <div className='px-5 mx-5'>
-        <Image 
+        <Image
           src='/imgs/starman_750x750.png'
           alt='Starman'
           className='p-5 sm:p-0'

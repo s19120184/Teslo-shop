@@ -1,9 +1,10 @@
 "use client";
+import ProductImage from "@/components/product-image/ProductImage";
 import QuantitySelector from "@/components/product/quantitySelector/QuantitySelector";
 import { CartProduct } from "@/src/interfaces/product.interface";
 import { useCartStore } from "@/src/store/cart/cart-store";
 
-import Image from "next/image";
+
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -33,16 +34,17 @@ export default function ProductsInCart() {
     <>
       {cart.map((product: CartProduct) => (
         <div className="flex mb-2" key={`${product.slug}-${product.size}`}>
-          <Image
-            src={`/products/${product.image}`}
+          <ProductImage
+            src={product.image}
             width={100}
             height={100}
             alt={product.title}
             className="mr-5 rounded"
             style={{
-              width: 100,
-              height: 100
+              width:100,
+              height:100
             }}
+           
           />
           <div>
             <Link
