@@ -32,9 +32,11 @@ export default function RegisterForm() {
        setErrorMessage(response.message!)
        return
     }
+
     const res =await login(email.toLowerCase(), password)
     if(res.ok){
-       window.location.replace('/')
+       console.log(res.ok)
+       window.location.replace('/profile')
     }
   };
 

@@ -15,12 +15,18 @@ export default function ProductGridItem({product}:Props) {
 
     const [displayImage, setDisplayImage ] = useState(product.images[0])
    
+    const localSrc = displayImage
+    ? displayImage.startsWith("http")
+      ? displayImage
+      : `/products/${displayImage}`
+    : "/imgs/placeholder.jpg";
+
     
    
   return (
     <div  className="rouded-md overflow-hidden fade-in ">
         <Image 
-           src={`/products/${displayImage}`}
+           src={localSrc}
            alt={product.title}
            className="w-full object-cover rounded"
            width={500}

@@ -5,7 +5,7 @@ import LoginForm from './ui/LoginForm';
 export default function LoginPage() {
   return (
     
-    <div className="flex flex-col min-h-screen pt-32 sm:pt-52">
+    <div className="flex flex-col min-h-screen pt-32 sm:pt-52 m-5 sm:m-0">
 
       <h1 className={ `${ titleFont.className } text-4xl mb-5` }>Ingresar</h1>
 

@@ -215,9 +215,9 @@ export default function ProductFormAdmin({ product, categories }: Props) {
               className="p-2 border rounded-md bg-gray-200"
               accept="image/png, image/jpeg, image/avif"
             />
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4">
               {product.ProductImage?.map((img) => (
-                <div key={img.id}>
+                <div key={img.id} className="">
                   <ProductImage
                     src={img.url}
                     width={200}

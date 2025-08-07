@@ -12,7 +12,10 @@ export default async function AdminLayout({children}:{children:React.ReactNode})
     }
     return(
         <>
-          {children}
+          <div className=" sm:w-full">
+             {children}
+          </div>
+          
         </>
     )
 }

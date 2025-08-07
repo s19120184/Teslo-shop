@@ -11,11 +11,15 @@ export default async function ProfilePage() {
     // redirect('/auth/login?returnTo=/perfil')
     redirect("/");
   }
+  const {name} = session.user
 
   return (
-    <div>
+    <div className="m-10">
       <Tittle title="Perfil" />
-      <pre>{JSON.stringify(session.user, null, 2)}</pre>
+      
+      <h2 className="text-4xl font-bold uppercase">{name}</h2>
+
+
     </div>
   );
 }

@@ -15,15 +15,17 @@ export default async function  OrdersPageAdmn() {
 
   return (
     <>
+
+
       <Tittle title="Orders" />
 
-      <div className=" mb-10 ">
+      <div className=" mb-10">
         <table className="min-w-full">
           <thead className="bg-gray-200 border-b border-gray-200 ">
             <tr>
               <th
                 scope="col"
-                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                className="text-sm font-medium text-gray-900 px-6 py-4 text-left "
               >
                 #ID
               </th>

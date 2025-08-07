@@ -27,7 +27,7 @@ export default function LoginForm() {
 
     
   return (
-    <form action={dispath} className="flex flex-col">
+    <form action={dispath} className="flex flex-col ">
 
         <label htmlFor="email">Correo electrónico</label>
         <input

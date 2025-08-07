@@ -31,7 +31,7 @@ export default async function OrderPage({ params }: Props) {
     return (
       <div className="flex  justify-center items-center   px-10 sm:px-0">
         <div className="flex flex-col  w-[1000px] ">
-          <Tittle title={`Orden #${id}`} />
+          <Tittle title={`Orden #${id.substring(id.length-10)}`} />
 
           {message && <ErrorInput message={message} />}
 
